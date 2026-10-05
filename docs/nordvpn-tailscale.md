@@ -108,6 +108,18 @@ VPN on, `ssh mesh-debian` works. Remaining pair issue was a stuck
 Mac↔Debian session, cleared by restarting the NordVPN Mac processes.
 Persistence across reboots (nftables service or equivalent) is still TODO.
 
+## Persistencia del fix (hecho 2026-10-05, verificado tras reboot)
+
+- `/usr/local/sbin/meshnet-nft-fix.sh` (idempotente) + unit systemd
+  `meshnet-nft-fix.service` (`After=tailscaled nordvpnd`, `WantedBy=
+  multi-user.target`, enabled). Reinserta la regla en cada arranque.
+- Verificado: tras `reboot`, la regla está presente y el mesh funciona.
+- Nota operativa: tras un reboot de Debian, la sesión Mac↔Debian puede
+  quedar trabada (endpoints rancios); se libera reiniciando los procesos
+  NordVPN de la Mac (kill + relanzar app, ~20 s sin VPN).
+- `loginctl: Linger=yes` para `chiko` — Hermes (user unit) sobrevive a
+  reboots y a cierre de sesión.
+
 ## Comandos de referencia
 
 ```sh

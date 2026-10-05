@@ -50,7 +50,7 @@ nodes:
     meshnet:
       nord_name: chico10117-alps.nord
       mesh_ip: 100.120.182.161
-      status: live # verified 2026-10-05 both directions with VPN on; needs nft accept rule for nordlynx (see docs/nordvpn-tailscale.md)
+      status: live # reboot-verified 2026-10-05; rule persisted via meshnet-nft-fix.service
     runtimes:
       codex_cli: 0.160.0
       opencode: broken # symlink -> /root/.opencode (unusable as chiko); reinstall in M4
