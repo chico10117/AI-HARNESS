@@ -1,0 +1,61 @@
+# Non-secret node inventory. Capabilities, not credentials.
+# No passwords, keys, tokens, or secrets of any kind belong here.
+
+nodes:
+  vps:
+    ssh_alias: recoVPS
+    canonical_alias_pending: ai-vps
+    ssh_user: root # GAP: migrate to dedicated users in M2 (see docs/security.md)
+    always_on: true
+    os: Ubuntu 24.04.4 LTS
+    cpu_threads: 4
+    ram_gib: 7.6
+    disk_root: 38G @ 80% used # WATCH: only ~7.3G free (2026-10-05)
+    disk_data: 49G @ 35% used (/data)
+    tailnet:
+      installed: "1.102.4"
+      status: logged-out # rollout in progress (decision 0002)
+    services:
+      - openclaw-gateway # 2026.9.7, user `openclaw`, 127.0.0.1:18789, /health ok
+    runtimes:
+      codex_cli: 0.160.0
+      opencode: 1.18.21
+      node: v22.23.2
+      docker: 29.3.0
+    worker_capacity: 2
+    notes:
+      - pm2-root service enabled; UFW active (22/80/443/3000/5001)
+      - stray root codex sessions observed 2026-10-05 (--yolo 25d, resume 4d)
+
+  debian:
+    ssh_alias: chiko_razer
+    canonical_alias_pending: ai-debian
+    ssh_user: chiko
+    hostname: debian
+    always_on: true
+    os: Debian 12 (bookworm)
+    cpu_threads: 12
+    ram_gib: 15
+    disk_root: 91G @ 79% used # WATCH: ~19G free (2026-10-05)
+    tailnet:
+      installed: false
+      status: pending-install # needs sudo install + login (decision 0002)
+    services:
+      - hermes-gateway # user systemd unit, Telegram polling connected
+    runtimes:
+      codex_cli: 0.160.0
+      opencode: broken # symlink -> /root/.opencode (unusable as chiko); reinstall in M4
+      node: v22.23.2
+      docker: 29.8.1 # no containers
+    worker_capacity: 2
+
+  mac:
+    role: operator-console # not a 24/7 execution node
+    os: macOS 26.6.2 (arm64)
+    runtimes:
+      codex_cli: 0.160.0
+      opencode: 1.18.34
+      docker_client: 29.4.0 # OrbStack daemon DOWN as of 2026-10-05
+    tailnet:
+      installed: 1.102.4
+      status: logged-out # rollout in progress (decision 0002)
