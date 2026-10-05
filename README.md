@@ -17,6 +17,9 @@ Topology, roles, and change discipline all come from there.
 Paperclip is not installed anywhere yet. Target: `paperclipai/paperclip v2026.1001.0`
 (see `docs/decisions/0001-paperclip-version.md`).
 
+Model policy: OpenCode workers default to the free Muse 1.3 tier
+(see `docs/decisions/0004-model-policy.md`).
+
 ## Layout
 
 ```text
