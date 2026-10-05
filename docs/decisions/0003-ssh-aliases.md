@@ -1,6 +1,6 @@
 # 0003 — SSH aliases: current names now, canonical names on tailnet
 
-- Date: 2026-10-05 · Status: **accepted (phase 1); phase 2 pending tailnet**
+- Date: 2026-10-05 · Status: **done (both phases, verified 2026-10-05)**
 - Context: Spec examples (`ai-vps`, `ai-debian`) don't exist. Real aliases:
   `recoVPS` (root, internet), `chiko_razer` (chiko, LAN). Operator chose
   "keep as-is" for aliases.

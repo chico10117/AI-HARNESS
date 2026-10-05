@@ -5,6 +5,8 @@ nodes:
   vps:
     ssh_alias: recoVPS
     canonical_alias_pending: ai-vps
+    tailnet_name: ubuntu-2gb-ash-1.tail910f06.ts.net
+    tailnet_ip: 100.73.61.81
     ssh_user: root # GAP: migrate to dedicated users in M2 (see docs/security.md)
     always_on: true
     os: Ubuntu 24.04.4 LTS
@@ -14,7 +16,7 @@ nodes:
     disk_data: 49G @ 35% used (/data)
     tailnet:
       installed: "1.102.4"
-      status: logged-out # rollout in progress (decision 0002)
+      status: live # verified 2026-10-05 (direct to mac + debian)
     services:
       - openclaw-gateway # 2026.9.7, user `openclaw`, 127.0.0.1:18789, /health ok
     runtimes:
@@ -30,6 +32,8 @@ nodes:
   debian:
     ssh_alias: chiko_razer
     canonical_alias_pending: ai-debian
+    tailnet_name: debian.tail910f06.ts.net
+    tailnet_ip: 100.84.216.84
     ssh_user: chiko
     hostname: debian
     always_on: true
@@ -38,8 +42,8 @@ nodes:
     ram_gib: 15
     disk_root: 91G @ 79% used # WATCH: ~19G free (2026-10-05)
     tailnet:
-      installed: false
-      status: pending-install # needs sudo install + login (decision 0002)
+      installed: "1.102.4"
+      status: live # verified 2026-10-05 (direct to mac + vps)
     services:
       - hermes-gateway # user systemd unit, Telegram polling connected
     runtimes:
@@ -58,4 +62,5 @@ nodes:
       docker_client: 29.4.0 # OrbStack daemon DOWN as of 2026-10-05
     tailnet:
       installed: 1.102.4
-      status: logged-out # rollout in progress (decision 0002)
+      status: live # verified 2026-10-05
+      note: NordVPN running on this Mac breaks tailnet TCP — pause it for fleet SSH
