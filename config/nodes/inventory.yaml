@@ -23,6 +23,7 @@ nodes:
       company: Chikocorp (dd5f296e)
       agents: chief-of-staff(2f05b0ce) ops(df430bfb) cto(9a55baa5) backend-infra(2101eb53) builder-vps(a3cc42ea) builder-debian(0a5b2d5f) + operator's AI-Cofounder/LOS Engineer
       probes: CHI-3 hermes ok (in_progress), CHI-4 openclaw runs ok (blocked by design: claimed credential)
+      m4: builder-vps DONE CHI-6 (0c, model 1.3), builder-debian PARTIAL CHI-7 (blocked: disposition gate), codex pair BLOCKED (bwrap userns denied at host — needs L2 fix); opencode model now 1.3-contributor-free on both builders
     runtimes:
       codex_cli: 0.160.0
       opencode: 1.18.21
