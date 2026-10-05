@@ -19,6 +19,10 @@ nodes:
       status: live # verified 2026-10-05 (direct to mac + debian)
     services:
       - openclaw-gateway # 2026.9.7, user `openclaw`, 127.0.0.1:18789, /health ok
+    paperclip: # M2+M3 done 2026-10-05: 2026.1001.0, user paperclip, tailnet-only 100.73.61.81:3100, telemetry off
+      company: Chikocorp (dd5f296e)
+      agents: chief-of-staff(2f05b0ce) ops(df430bfb) cto(9a55baa5) backend-infra(2101eb53) builder-vps(a3cc42ea) builder-debian(0a5b2d5f) + operator's AI-Cofounder/LOS Engineer
+      probes: CHI-3 hermes ok (in_progress), CHI-4 openclaw runs ok (blocked by design: claimed credential)
     runtimes:
       codex_cli: 0.160.0
       opencode: 1.18.21

@@ -60,8 +60,14 @@ max 2 active compute-heavy workers per node.
 
 No private overlay is active today (Tailscale logged out / not installed).
 Decision 0002 adopts a tailnet on all nodes; Section "Tailscale rollout"
-tracks it. No SSH/RDP/VNC is to be exposed to the public internet for
+tracks it. No SSH/RDP/VNC is to be exposed to the public Internet for
 convenience.
+
+Path roles with NordVPN active on the Mac (verified 2026-10-05): tailnet TCP
+originated on the Mac dies in the double tunnel (both `ai-*` time out; also
+MagicDNS doesn't resolve under Nord DNS) — use `mesh-debian` for Mac→Debian
+and `recoVPS` (internet) for Mac→VPS. Tailnet paths (`ai-*`, VPS→Debian)
+are for VPN-off/travel-off use and server-to-server traffic.
 
 ## Initial agent mapping (planned, none created)
 
