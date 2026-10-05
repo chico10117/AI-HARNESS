@@ -91,6 +91,23 @@ VPS ──tailnet──────────► Debian    (100.84.216.84, ver
 Aliases locales: `ai-vps`/`ai-debian` = tailnet; `mesh-debian` = Meshnet
 (tramo Mac→Debian con VPN activo).
 
+## Root cause found + fix applied (2026-10-05)
+
+Tailscale's netfilter rules on Debian drop any packet with source in
+`100.64.0.0/10` arriving on a non-Tailscale interface (`ts-input` chain —
+counter showed 276 drops). NordVPN Meshnet IPs live in that same CGNAT
+range, so **every inbound Meshnet packet on Debian was dropped**. Fix (needs
+sudo, runtime-only — **re-apply after every Debian reboot**):
+
+```sh
+sudo nft insert rule ip filter INPUT iifname "nordlynx" ip saddr 100.64.0.0/10 counter accept
+```
+
+Verified after fix: Debian→iPhone flows, Mac↔Debian ping 4/4 both ways with
+VPN on, `ssh mesh-debian` works. Remaining pair issue was a stuck
+Mac↔Debian session, cleared by restarting the NordVPN Mac processes.
+Persistence across reboots (nftables service or equivalent) is still TODO.
+
 ## Comandos de referencia
 
 ```sh

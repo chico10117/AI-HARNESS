@@ -1,6 +1,6 @@
 # 0005 — Meshnet de Nord para el tramo Mac→Debian (solución 2)
 
-- Date: 2026-10-05 · Status: **accepted, rollout pending (pasos humanos)**
+- Date: 2026-10-05 · Status: **done (verified 2026-10-05, both directions)**
 - Context: NordVPN siempre activo en la Mac rompe todo TCP Tailscale
   originado en ella (ver `docs/nordvpn-tailscale.md`). La app de Nord en
   macOS no tiene split tunneling, y reconfigurar a cliente manual (opción 1)

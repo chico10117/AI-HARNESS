@@ -1,6 +1,6 @@
 # 0002 — Private overlay: Tailscale on all nodes
 
-- Date: 2026-10-05 · Status: **accepted, rollout in progress**
+- Date: 2026-10-05 · Status: **done (verified 2026-10-05, all three nodes)**
 - Context: Debian is behind home NAT — VPS cannot reach it (verified 100%
   packet loss) and the laptop loses it while traveling. Tailscale was logged
   out on Mac/VPS and absent on Debian. Spec prefers a private overlay first.

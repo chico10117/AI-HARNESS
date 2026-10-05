@@ -32,6 +32,7 @@ nodes:
   debian:
     ssh_alias: chiko_razer
     canonical_alias_pending: ai-debian
+    mesh_alias: mesh-debian # Mac->Debian via NordVPN Meshnet (decision 0005)
     tailnet_name: debian.tail910f06.ts.net
     tailnet_ip: 100.84.216.84
     ssh_user: chiko
@@ -46,6 +47,10 @@ nodes:
       status: live # verified 2026-10-05 (direct to mac + vps)
     services:
       - hermes-gateway # user systemd unit, Telegram polling connected
+    meshnet:
+      nord_name: chico10117-alps.nord
+      mesh_ip: 100.120.182.161
+      status: live # verified 2026-10-05 both directions with VPN on; needs nft accept rule for nordlynx (see docs/nordvpn-tailscale.md)
     runtimes:
       codex_cli: 0.160.0
       opencode: broken # symlink -> /root/.opencode (unusable as chiko); reinstall in M4
