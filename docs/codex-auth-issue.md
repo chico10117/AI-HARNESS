@@ -81,8 +81,30 @@
 4. If it still fails identically: stop, capture exact error — do NOT start
    another device login (each one risks invalidating the last).
 
-## 6. Other pending items (not this issue)
+## 6. Current status + the fix that unblocked validation (2026-10-06 late)
 
+**Cleanup done:** agent error flags cleared via sanctioned clear-error;
+10 stale trial issues (CHI-5/8/9/10/11/12/13/14/15/17) moved to
+`cancelled` with a proven NON-waking update (`issue update --status
+cancelled`, no comment — commenting wakes agents). CHI-7/CHI-4
+deliberately left blocked (need human disposition judgment).
+
+**The fix for `configuration_incomplete`:** `cto` + `backend-infra` were
+re-pointed from the revoked personal grant (`37c31bc1` / connection
+`57800dd4`) to the healthy shared grant (`b0fd6a45` / connection
+`1ea07e48` "Chiko's OpenAI") via partial agent update (all adapter fields
+preserved). Validation gate now passes — runs spawn, confine, and reach
+the model (`thread.started`).
+
+**Still failing:** trials CHI-18/CHI-19 die with `refresh_token_invalidated`
+(HTTP 401s on refresh) despite UI Connected. Conclusion: the shared
+grant's stored token is ALSO dead — every device login so far produced
+tokens OpenAI rejects at first refresh (single-account browser confirmed;
+stray refreshers killed). Next: Reconnect the shared connection
+(`1ea07e48`) in UI (or pick `c0806377`), then single fresh trial per
+worker. If THAT still 401s, use the API-key escape hatch (real money).
+
+## 7. Other pending items (not this issue)
 - Push 8+ local commits to `github.com/chico10117/AI-HARNESS` (explicit `git push` never authorized yet).
 - CHI-4 disposition (OpenClaw claimed credential), CHI-7 disposition click.
 - 2 orphaned dummy secrets (`hermes_gateway.apikey.8f538c67…`, `…51c3b045…`, refs=0) await delete approval.
