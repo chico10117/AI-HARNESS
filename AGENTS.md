@@ -158,6 +158,13 @@ documentation task.
   [0012](docs/decisions/0012-paperclip-claimed-key.md) records successful
   identity/write-back probes. Do not re-claim consumed invites or rotate keys
   simply because an old issue says the file is missing.
+- OpenClaw gateway timeouts: existing Jarvis and `ops` set
+  `adapterConfig.timeoutSec=600` and `waitTimeoutMs=600000` (10 minutes).
+  New agents default to `300` / `300000` (5 minutes), including the creation
+  form and unset runtime configs. Explicit overrides remain supported.
+  [0013](docs/decisions/0013-openclaw-default-timeouts.md) records the installed
+  adapter, stop-metadata, and UI patches, backups, verification, and rollback.
+  Upgrades can overwrite these defaults; inspect and preserve this policy.
 - OpenClaw gateway runs do not automatically mount Paperclip's workspaces.
   Claimed credentials restore API identity, not filesystem access. Jarvis's
   gateway sessions previously denied exec (`SYSTEM_RUN_DENIED`) and used the
