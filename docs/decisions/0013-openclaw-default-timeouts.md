@@ -1,5 +1,10 @@
 # 0013 — OpenClaw gateway timeouts: existing agents 10 minutes, new agents 5
 
+**Superseded policy:** the operator clarified that five minutes applies to new
+agents outside OpenClaw. [Decision 0014](0014-agent-timeout-policy-correction.md)
+records the corrected defaults: OpenClaw ten minutes, other new agents five.
+The sections below retain the initial deployment history.
+
 - Date: 2026-10-08
 - Status: applied and verified; Paperclip restarted during an idle window.
 - Scope: recoVPS Paperclip managed npm `2026.1001.0`, company Chikocorp.

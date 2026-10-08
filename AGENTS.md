@@ -160,10 +160,14 @@ documentation task.
   simply because an old issue says the file is missing.
 - OpenClaw gateway timeouts: existing Jarvis and `ops` set
   `adapterConfig.timeoutSec=600` and `waitTimeoutMs=600000` (10 minutes).
-  New agents default to `300` / `300000` (5 minutes), including the creation
-  form and unset runtime configs. Explicit overrides remain supported.
+  New OpenClaw agents also default to `600` / `600000` (10 minutes).
+  New agents using other adapters default to `timeoutSec=300` (5 minutes);
+  HTTP uses `timeoutMs=300000`. Creation defaults preserve explicit overrides,
+  including zero, and do not change existing agents' configurations.
+  [0014](docs/decisions/0014-agent-timeout-policy-correction.md) records the
+  corrected policy and the creation-only server/UI patches.
   [0013](docs/decisions/0013-openclaw-default-timeouts.md) records the installed
-  adapter, stop-metadata, and UI patches, backups, verification, and rollback.
+  OpenClaw patches and the superseded interpretation of the 5-minute request.
   Upgrades can overwrite these defaults; inspect and preserve this policy.
 - OpenClaw gateway runs do not automatically mount Paperclip's workspaces.
   Claimed credentials restore API identity, not filesystem access. Jarvis's
